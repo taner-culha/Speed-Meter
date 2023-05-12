@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Meter Using HTML CSS Js</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }     
+        body {
+            display: flex;
+            background: #002609;
+            font-weight: bold;
+        }
+        
+        .speed-meter {
+            margin: auto;
+            display: flex;
+            font-size: 24px;
+            align-items: center;
+            color: #ffffff40;
+        }
+        span {
+            text-shadow: 10px 16px 0 #ffffff40;
+            font-size: 8em;
+            color: #fff;
+        }
+        
+        .unit {
+            text-shadow: 4px 8px 0 #ffffff40;
+            color: #fff;
+            font-size: 2em;
+        }
+        .speed-meter > .speed {
+            margin-left: 16px;
+        }
+        .spinner {
+            margin-top: 8px;
+            border: 4px solid #ffffff40;
+            height: 32px;
+            width: 32px;
+            position: relative;
+            border-top-color: rgb(255, 255, 255);
+            border-radius: 50%;
+            animation: rotation 1s infinite linear;
+        } 
+        @keyframes rotation {
+        100% {
+                transform: rotate(360deg);
+             } 
+        }
+    </style>
+    
+</head>
+<body>
+    <div class='speed-meter'>
+        <span data-js-number>123</span>
+        <div class="speed">
+          <div class="unit">Mbps</div>
+          <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script>
+        function tick (span) {
+            const n = Math.round(Math.random() * 1000)
+            span.innerHTML = n
+            setTimeout(() => tick(span), 800)
+        }
+        tick(document.querySelector('[data-js-number]'))
+    </script>
+</body>
+</html>
